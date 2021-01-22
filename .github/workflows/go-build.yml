@@ -11,4 +11,4 @@ jobs:
     - name: checkout
       uses: actions/checkout@v2
     - name: build
-      run: go build -o toxy ./cmd/toxy/...
+      run: make build
