@@ -1,14 +1,24 @@
 name: Publish Docker image
 on:
+  push:
+    tags:
+      - 'v*'
   release:
     types: [published]
 jobs:
-  push-to-registry:
-    name: Push Docker image to GitHub Packages
+  push-to-registries:
+    name: Push Docker image to Registries
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+          repository: ${{ github.repository }}
+          tag_with_ref: true
       - name: Push to GitHub Packages
         uses: docker/build-push-action@v1
         with:
@@ -16,5 +26,4 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
           repository: ${{ github.repository }}/toxy
-          tag_with_sha: true
           tag_with_ref: true
