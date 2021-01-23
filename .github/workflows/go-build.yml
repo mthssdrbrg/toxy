@@ -1,7 +1,8 @@
-name: go-build
+name: build
 on: [push, pull_request]
 jobs:
   build:
+    name: go
     runs-on: ubuntu-latest
     steps:
     - name: setup
