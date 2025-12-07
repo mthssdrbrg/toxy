@@ -1,8 +1,8 @@
 module github.com/mthssdrbrg/toxy
 
-go 1.17
+go 1.25
 
 require (
-	github.com/spf13/pflag v1.0.5
-	inet.af/tcpproxy v0.0.0-20210824174053-2e577fef49e2
+	github.com/spf13/pflag v1.0.10
+	inet.af/tcpproxy v0.0.0-20231102063150-2862066fc2a9
 )
