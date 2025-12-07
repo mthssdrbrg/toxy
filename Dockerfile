@@ -1,8 +1,8 @@
-FROM golang:1.15-alpine AS build
+FROM golang:1.25-alpine AS build
 
-ENV GOOS linux
-ENV GOARCH amd64
-ENV CGO_ENABLED 0
+ENV GOOS=linux
+ENV GOARCH=amd64
+ENV CGO_ENABLED=0
 
 WORKDIR /go/src
 
